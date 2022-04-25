@@ -1,0 +1,24 @@
+#ifndef DECK_H_
+#define DECK_H_
+
+#define DECK_SIZE 52
+#define SUIT_SIZE 4
+#define RANK_SIZE 13
+
+const char *_suits[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+const char *_ranks[13] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+
+struct card{
+    char *rank;
+    char *suit;
+};
+
+struct deck{
+    struct card cards[DECK_SIZE];
+};
+
+void deck_init(struct deck* d);
+void print_deck(struct deck* d);
+
+
+#endif

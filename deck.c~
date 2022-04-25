@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include "deck.h"
+
+void deck_init(struct deck* d){
+    int c_nmb=0;
+    for(int i=0; i<SUIT_SIZE; ++i){
+        for(int j=0; j<RANK_SIZE; ++j){
+            d->cards[c_nmb].suit = _suits[i];
+            d->cards[c_nmb].rank = _ranks[j];
+            c_nmb++;
+        }
+    }
+}
+
+void print_deck(struct deck* d){
+    for(int i=0; i<DECK_SIZE; ++i){
+        printf("%c \n", *d->cards[i].suit);
+    }
+}
