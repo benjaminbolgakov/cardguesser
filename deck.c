@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "deck.h"
 
-char suits[4][15] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+char suits[4][9] = {"Hearts", "Diamonds", "Clubs", "Spades"};
 char ranks[13][6] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
 
 void deck_init(struct deck* d){
@@ -18,14 +18,18 @@ void deck_init(struct deck* d){
 
 void shuffle(struct deck* d){
     int deck_halv = DECK_SIZE/2;
-    for(int i=0; i<deck_halv; i++){
-        char t_rank = *d->cards[i].rank;
-        //char t_suit = *d->cards[i].suit;
-        //printf("%c \n", t_rank);
-        //printf("%s \n", *d->cards[i].suit);
-        //*d.cards[i+1].rank = t_rank;
-        //*d.cards[i+1].suit = t_suit;
-    }
+    struct card *temp = &d->cards[1];
+
+    d->cards[1] = d->cards[2];
+    d->cards[2] = *temp;
+/*    for(int i=0; i<DECK_SIZE; i++){
+        char *t_rank = d->cards[i].rank;
+        char *t_suit = d->cards[i].suit;
+        printf("%s \n", d->cards[i].suit);
+        printf("%s \n", t_suit);
+        d->cards[i+1].rank = t_rank;
+        d->cards[i+1].suit = t_suit;
+        }*/
 /*    for(int i=0; i < DECK_SIZE; i++){
         int j = i + rand() / (RAND_MAX / (DECK_SIZE-i) + 1);
         //int suit_rnd = i + rand() / (RAND_MAX / (SUIT_SIZE-i) + 1);
