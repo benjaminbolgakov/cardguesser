@@ -18,10 +18,12 @@ void deck_init(struct deck* d){
 
 void shuffle(struct deck* d){
     int deck_halv = DECK_SIZE/2;
-    struct card *temp = &d->cards[1];
-
-    d->cards[1] = d->cards[2];
-    d->cards[2] = *temp;
+    for(int i=0; i<DECK_SIZE; i++){
+        int j = i + rand() / (RAND_MAX / (DECK_SIZE-i) + 1);
+        struct card temp = d->cards[j];
+        d->cards[j] = d->cards[i];
+        d->cards[i] = temp;
+    }
 /*    for(int i=0; i<DECK_SIZE; i++){
         char *t_rank = d->cards[i].rank;
         char *t_suit = d->cards[i].suit;

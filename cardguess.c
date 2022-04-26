@@ -3,6 +3,9 @@
 #include <string.h>
 #include "deck.h"
 
+//gcc -Wall -Wextra -Wpedantic cardguess.c deck.c
+
+
 void prompt(struct deck* d);
 
 
