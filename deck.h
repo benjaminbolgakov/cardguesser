@@ -1,7 +1,7 @@
 #ifndef DECK_H_
 #define DECK_H_
 
-#define DECK_SIZE 52
+#define DECK_SIZE 54
 #define P_DECK_SIZE 18
 #define SUIT_SIZE 4
 #define RANK_SIZE 13
