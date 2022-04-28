@@ -38,7 +38,8 @@ void game(struct deck* d){
         printf("In which row is your card? (type the number 1,2 or 3 and hit Enter) \n");
         scanf("%d", &input);
         magic_shuffle(d,input);
+//        print_deck(d);
     }
     //Print the 13th (11th?) card, which is the magic card
-    printf("%s %s", d->cards[13].suit, d->cards[13].rank);
+    //printf("%s %s", d->cards[13].suit, d->cards[13].rank);
 }

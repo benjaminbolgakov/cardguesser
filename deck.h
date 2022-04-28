@@ -17,10 +17,12 @@ struct card{
 struct deck{
     struct card cards[DECK_SIZE];
 };
-
-struct p_deck{
-    struct card cards[P_DECK_SIZE];
-};
+/*
+struct deck{
+    struct card c_1[17];
+    struct card c_2[17];
+    struct card c_3[18];
+};*/
 
 void deck_init(struct deck* d);
 void print_deck(struct deck* d);
