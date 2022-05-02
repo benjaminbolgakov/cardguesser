@@ -1,8 +1,8 @@
 #ifndef DECK_H_
 #define DECK_H_
 
-#define DECK_SIZE 54
-#define P_DECK_SIZE 18
+#define DECK_SIZE 21
+#define P_DECK_SIZE 21
 #define SUIT_SIZE 4
 #define RANK_SIZE 13
 
@@ -26,7 +26,7 @@ struct deck{
 
 void deck_init(struct deck* d);
 void print_deck(struct deck* d);
-void shuffle(struct deck* d);
+struct deck* shuffle(struct deck* d);
 void magic_shuffle(struct deck* d, int input);
 
 #endif
