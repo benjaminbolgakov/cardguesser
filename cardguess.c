@@ -41,5 +41,5 @@ void game(struct deck* d){
         print_deck(d);
     }
     //Print the 13th (11th?) card, which is the magic card
-    //printf("%s %s", d->cards[13].suit, d->cards[13].rank);
+    printf("%s%s \n", d->cards[11].suit, d->cards[11].rank);
 }
