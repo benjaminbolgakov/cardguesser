@@ -18,27 +18,6 @@ void deck_init(struct deck* d){
             r_nmb=0;
         }
     }
-    /*int c_nmb=0;
-    int suit_seed=0;
-    int rank_seed=0;
-    for(int j=0; j<DECK_SIZE; j++){
-        Fisher -Yates shuffle
-        int rnd_suit = suit_seed + rand() / (RAND_MAX / (SUIT_SIZE-suit_seed) + 1);
-        int rnd_rank = rank_seed + rand() / (RAND_MAX / (RANK_SIZE-rank_seed) + 1);
-        d->cards[c_nmb].suit = suits[rnd_suit];
-        d->cards[c_nmb].rank = ranks[rnd_rank];
-        c_nmb++;
-        if(suit_seed < SUIT_SIZE-1){
-            suit_seed++;
-        }else{
-            suit_seed=0;
-        }
-        if(rank_seed < RANK_SIZE-1){
-            rank_seed++;
-        }else{
-            rank_seed=0;
-        }
-    }*/
 }
 /*Fisher -Yates shuffle*/
 struct deck* shuffle(struct deck* d){
@@ -53,49 +32,54 @@ struct deck* shuffle(struct deck* d){
 }
 
 void magic_shuffle(struct deck* d, int input){
-    /*int index=(input*7)-7;
-    struct card temp;
-    for(int i=7; i<14; i++){
-        temp = d->cards[i];
-        d->cards[i]=d->cards[index];
-        d->cards[index] = temp;
-        index++;
-        }
+/*Row 1 select:
+1: 1 4 7 10 13 16 19
+2: 0 3 6 9 12 15 18
+3: 2 5 8 11 14 17 20
 
-HA H2 H3
-H4 H5 H6
-H7 H8 H9
-H10 HJ HQ
-HK DA D2
-D3 D4 D5
-D6 D7 D8
-->
-H10 H9 H8
-HK HQ HJ
-H2 HA DA
-H5 H4 H3
-D2 H7 H6
-D5 D4 D3
-D8 D7 D6
+Row 2 select:
+1: 0 3 6 9 12 15 18
+2: 1 4 7 10 13 16 19
+3: 2 5 8 11 14 17 20
 
-
-
-
+Row 3 select:
+1: 1 4 7 10 13 16 19
+2: 2 5 8 11 14 17 20
+3: 0 3 6 9 12 15 18
 */
+    struct deck temp;
+    int index = input;
+    if(input == 1){
+        index = 1;
+    }
+    if(input == 2){
+        index = 0;
+    }
+    if(input == 3){
+        index = 1;
+    }
 
-    int row_nmb= input;
-    int t=4;
-    struct card temp;
     for(int i=0; i<DECK_SIZE; i++){
-        temp = d->cards[i];
-        d->cards[i] = d->cards[t];
-        d->cards[t] = temp;
-        t+=4;
-        if(i%7==0){
-            t=row_nmb;
-            row_nmb++;
+        temp.cards[i] = d->cards[index];
+        index += 3;
+
+        if((i+1)%7 == 0){
+            if(input ==1){
+                index = 0;
+            }else{
+                index = 1;
+            }
+        }
+        if((i+1)%14 == 0){
+            if(input == 1){
+                index = 2;
+            }else{
+                index = 2;
+            }
         }
     }
+    //Assign the sorted deck to the playing-deck
+    *d = temp;
 }
 
 void print_deck(struct deck* d){
@@ -105,17 +89,4 @@ void print_deck(struct deck* d){
             printf("\n");
         }
     }
-/*    int row_nmb=1;
-    int t=0;
-    for(int i=1; i<=DECK_SIZE; i++){
-        //printf("%d %s %-20s ", (i-1),d->cards[i-1].suit, d->cards[i-1].rank);
-        printf("%s%s ", d->cards[t].suit, d->cards[t].rank);
-        t+=3;
-        if(i%7 == 0){
-            printf("   Row %d", row_nmb);
-            printf("\n");
-            t=row_nmb;
-            row_nmb++;
-        }
-        }*/
 }

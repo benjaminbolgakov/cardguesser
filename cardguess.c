@@ -40,6 +40,7 @@ void game(struct deck* d){
         magic_shuffle(d,input);
         print_deck(d);
     }
-    //Print the 13th (11th?) card, which is the magic card
-    printf("%s%s \n", d->cards[11].suit, d->cards[11].rank);
+    //Print the 11th card, which is the magic card
+    printf("\n");
+    printf("The card you thought of was: %s%s \n", d->cards[10].suit, d->cards[10].rank);
 }
