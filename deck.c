@@ -66,15 +66,19 @@ Row 3 select:
         if((i+1)%7 == 0){
             if(input ==1){
                 index = 0;
-            }else{
+            }else if(input == 2){
                 index = 1;
+            }else{
+                index=2;
             }
         }
         if((i+1)%14 == 0){
             if(input == 1){
                 index = 2;
-            }else{
+            }else if(input == 2){
                 index = 2;
+            }else{
+                index = 0;
             }
         }
     }
