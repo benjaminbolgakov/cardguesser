@@ -8,5 +8,5 @@ Making and running the game:
 git clone git@github.com:benjaminbolgakov/cardguesser.git
 cd cardguesser
 make
-./cardguesser
+./cardguess
 ```
